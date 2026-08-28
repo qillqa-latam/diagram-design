@@ -1,0 +1,98 @@
+{
+  "name": "diagram-design",
+  "version": "1.0.0",
+  "description": "Editorial diagrams your designer won't hate. Reusable TypeScript library with 39 diagram types, 7 semantic patterns, and 4px grid orthogonal routing.",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "diagram-design": "./dist/cli/index.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./tokens": {
+      "types": "./dist/tokens/index.d.ts",
+      "import": "./dist/tokens/index.js",
+      "require": "./dist/tokens/index.cjs"
+    },
+    "./layout": {
+      "types": "./dist/layout/index.d.ts",
+      "import": "./dist/layout/index.js",
+      "require": "./dist/layout/index.cjs"
+    },
+    "./diagrams": {
+      "types": "./dist/diagrams/index.d.ts",
+      "import": "./dist/diagrams/index.js",
+      "require": "./dist/diagrams/index.cjs"
+    },
+    "./semantic-patterns": {
+      "types": "./dist/semantic-patterns/index.d.ts",
+      "import": "./dist/semantic-patterns/index.js",
+      "require": "./dist/semantic-patterns/index.cjs"
+    },
+    "./renderers": {
+      "types": "./dist/renderers/index.d.ts",
+      "import": "./dist/renderers/index.js",
+      "require": "./dist/renderers/index.cjs"
+    },
+    "./linter": {
+      "types": "./dist/linter/index.d.ts",
+      "import": "./dist/linter/index.js",
+      "require": "./dist/linter/index.cjs"
+    },
+    "./importers": {
+      "types": "./dist/importers/index.d.ts",
+      "import": "./dist/importers/index.js",
+      "require": "./dist/importers/index.cjs"
+    },
+    "./icons": {
+      "types": "./dist/icons/index.d.ts",
+      "import": "./dist/icons/index.js",
+      "require": "./dist/icons/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "diagram",
+    "architecture",
+    "svg",
+    "editorial",
+    "sankey",
+    "flowchart",
+    "sequence",
+    "database-schema",
+    "radar",
+    "treemap",
+    "typescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^13.1.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^21.2.2",
+    "@commitlint/config-conventional": "^21.2.2",
+    "@resvg/resvg-js": "^2.6.2",
+    "@types/node": "^22.13.1",
+    "tsup": "^8.3.6",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
+  }
+}
