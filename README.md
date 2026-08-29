@@ -162,6 +162,21 @@ npx diagram-design lint architecture.html
 
 ---
 
+## Interactive Playground
+
+`diagram-design` includes an interactive web playground to preview, live-edit, and lint all 39 diagram types, 7 semantic patterns, and Mermaid/Draw.io importers.
+
+```bash
+# Launch the interactive local development playground
+pnpm playground
+# or
+pnpm dev:playground
+```
+
+The playground is strictly isolated from npm/pnpm distributables and will never be bundled in the published package.
+
+---
+
 ## License
 
 MIT
