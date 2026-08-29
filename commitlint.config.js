@@ -37,6 +37,8 @@ export default {
         'linter',
         'importers',
         'cli',
+        'playground',
+        'packaging',
         'config',
         'deps'
       ]
