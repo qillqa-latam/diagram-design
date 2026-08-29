@@ -1,0 +1,10 @@
+# Development and Playground files (never export to npm)
+playground/
+dist-playground/
+.vite/
+vite.config.ts
+tsconfig.playground.json
+vitest.config.ts
+commitlint.config.js
+pnpm-workspace.yaml
+*.test.ts
