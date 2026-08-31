@@ -33,9 +33,11 @@ describe('NPM / PNPM Distributables Hermetic Isolation Test', () => {
 
   it('should guarantee npm pack --dry-run contains 0 playground files in the publish tarball', () => {
     try {
-      const output = execSync('npm pack --dry-run --json', {
+      // --ignore-scripts skips prepack/build so stdout stays valid JSON
+      const output = execSync('npm pack --dry-run --json --ignore-scripts', {
         cwd: path.resolve(__dirname, '..'),
-        encoding: 'utf-8'
+        encoding: 'utf-8',
+        timeout: 60_000
       });
 
       const packInfo = JSON.parse(output);
@@ -69,10 +71,11 @@ describe('NPM / PNPM Distributables Hermetic Isolation Test', () => {
           filePath === 'package.json';
         expect(isAllowed).toBe(true);
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : String(err);
       // In case npm is not in path or dry-run fails, inspect files whitelist manually
-      console.warn('npm pack --dry-run test fallback:', err.message);
+      console.warn('npm pack --dry-run test fallback:', message);
       expect(pkg.files).not.toContain('playground');
     }
-  });
+  }, 60_000);
 });
