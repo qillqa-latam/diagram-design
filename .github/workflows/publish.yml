@@ -1,0 +1,43 @@
+# Publishes @qillqa-latam/diagram-design when a GitHub Release is published.
+#
+# Auth (pick one):
+# 1. Trusted Publishing (preferred): npmjs.com → package → Settings →
+#    Trusted Publisher → GitHub Actions
+#    (repo: qillqa-latam/diagram-design, workflow: publish.yml)
+# 2. Granular access token: npmjs.com → Access Tokens → Read and write
+#    on @qillqa-latam/*, then add repo secret NPM_TOKEN
+name: Publish to npm
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        env:
+          HUSKY: "0"
+
+      - name: Verify package before publish
+        run: pnpm run release:check
+
+      - name: Publish to npm
+        run: npm publish --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
