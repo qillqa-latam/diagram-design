@@ -1,4 +1,4 @@
-import { EXAMPLES, type ExampleDefinition } from './examples.js';
+import { EXAMPLES, type ExampleDefinition } from '../../shared/examples.js';
 import {
   renderToSvg,
   renderToHtml,

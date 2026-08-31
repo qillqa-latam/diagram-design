@@ -53,19 +53,11 @@ import {
   // Importers
   importMermaid,
   importDrawio,
-  // Base
-  type BaseDiagram
 } from 'diagram-design';
 
-export interface ExampleDefinition {
-  id: string;
-  name: string;
-  category: 'Structural' | 'Hierarchical' | 'Workflow' | 'Quantitative' | 'Data Platform' | 'Semantic Patterns' | 'Importers';
-  type: 'json' | 'mermaid' | 'drawio';
-  description: string;
-  defaultConfig: any;
-  buildDiagram: (config: any, options: { theme?: 'light' | 'dark' | 'terminal'; motion?: 'none' | 'reveal' | 'step' | 'loop' }) => BaseDiagram;
-}
+import type { ExampleDefinition } from './types.js';
+
+export type { ExampleDefinition } from './types.js';
 
 export const EXAMPLES: ExampleDefinition[] = [
   // ==========================================

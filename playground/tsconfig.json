@@ -17,5 +17,5 @@
       "diagram-design": ["../src/index.ts"]
     }
   },
-  "include": ["src/**/*", "index.html", "vite.config.ts"]
+  "include": ["src/**/*", "index.html", "vite.config.ts", "../shared/**/*"]
 }
