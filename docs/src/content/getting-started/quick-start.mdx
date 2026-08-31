@@ -1,0 +1,106 @@
+# Quick Start
+
+These examples mirror the README and cover the most common use cases.
+
+## 1. Architecture Diagram
+
+<DiagramPreview id="architecture" />
+
+```typescript
+import { ArchitectureDiagram, renderToHtml, renderToSvg } from '@qillqa-latam/diagram-design';
+
+const diagram = new ArchitectureDiagram({
+  title: 'Content Site in Production',
+  eyebrow: 'Architecture · Production',
+  zones: [
+    { id: 'content', label: 'CONTENT SERVICES', x: 616, y: 128, width: 164, height: 272 }
+  ],
+  nodes: [
+    { id: 'reader', label: 'Reader', sublabel: 'Browser', tag: 'EXT', x: 40, y: 240, width: 128, height: 64, kind: 'input' },
+    { id: 'edge', label: 'Cloudflare', sublabel: 'CDN & WAF', tag: 'EDGE', x: 220, y: 240, width: 144, height: 64, kind: 'backend' },
+    { id: 'origin', label: 'Astro Origin', sublabel: 'SSR / Node', tag: 'CORE', x: 416, y: 240, width: 160, height: 64, focal: true }
+  ],
+  connections: [
+    { from: 'reader', to: 'edge', label: 'HTTPS', kind: 'link' },
+    { from: 'edge', to: 'origin', label: 'SSR', kind: 'accent' }
+  ]
+});
+
+const svg = renderToSvg(diagram);
+const html = renderToHtml(diagram);
+```
+
+## 2. Sankey Volume Flow
+
+<DiagramPreview id="sankey" />
+
+```typescript
+import { SankeyDiagram, renderToSvg } from '@qillqa-latam/diagram-design';
+
+const sankey = new SankeyDiagram({
+  title: 'CI Compute Allocation',
+  columnHeaders: ['Ingress', 'Stage', 'Outcome'],
+  nodes: [
+    { id: 'total', name: 'Total CI', column: 0, quantity: 12000 },
+    { id: 'tests', name: 'Unit & E2E', column: 1, quantity: 9200 },
+    { id: 'build', name: 'Build', column: 1, quantity: 2800 },
+    { id: 'pass', name: 'Passed', column: 2, quantity: 10400 },
+    { id: 'fail', name: 'Failed', column: 2, quantity: 1600, focal: true }
+  ],
+  flows: [
+    { from: 'total', to: 'tests', quantity: 9200 },
+    { from: 'total', to: 'build', quantity: 2800 },
+    { from: 'tests', to: 'pass', quantity: 8000 },
+    { from: 'tests', to: 'fail', quantity: 1200 },
+    { from: 'build', to: 'pass', quantity: 2400 },
+    { from: 'build', to: 'fail', quantity: 400, focal: true }
+  ]
+});
+
+const svg = renderToSvg(sankey);
+```
+
+## 3. Loop / Flywheel
+
+<DiagramPreview id="loop" />
+
+```typescript
+import { LoopDiagram, renderToSvg } from '@qillqa-latam/diagram-design';
+
+const loop = new LoopDiagram({
+  title: 'The Self-Improving Operating Loop',
+  hub: { name: 'Shared Memory', sublabel: 'one record, every loop' },
+  stations: [
+    { name: 'Capture', sublabel: 'signals in', spokeLabel: 'SIGNALS' },
+    { name: 'Research', sublabel: 'evidence' },
+    { name: 'Decide', sublabel: 'approval', focal: true },
+    { name: 'Act', sublabel: 'work ships', spokeLabel: 'OUTCOMES' },
+    { name: 'Learn', sublabel: 'playbook updated' }
+  ]
+});
+
+const svg = renderToSvg(loop);
+```
+
+## 4. Semantic Behavioral Pattern
+
+<DiagramPreview id="pattern-fan-in" />
+
+```typescript
+import { createFanInQueueDiagram, renderToSvg } from '@qillqa-latam/diagram-design';
+
+const queueDiagram = createFanInQueueDiagram({
+  title: 'Real-time Event Ingestion Bottleneck',
+  sources: [
+    { name: 'Mobile App', rate: '12k/s' },
+    { name: 'Web Store', rate: '8k/s' }
+  ],
+  queueCapacity: 50000,
+  queueDepth: 42000,
+  bottleneckService: { name: 'Kafka Consumer Group', capacityRate: '15k/s' },
+  admittedPath: 'ClickHouse Lakehouse',
+  deferredPath: 'S3 Spill Bucket'
+});
+
+const svg = renderToSvg(queueDiagram);
+```

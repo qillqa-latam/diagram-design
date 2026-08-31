@@ -1,0 +1,34 @@
+# Taste Gate
+
+The Taste Gate is a set of linters that validate rendered diagrams against editorial quality rules before publication.
+
+## Validators
+
+| Validator | Checks |
+|-----------|--------|
+| `validateGeometryMasks` | Label masks clip connector strokes correctly |
+| `validate4pxGrid` | All coordinates align to the 4px grid |
+| Conservation verifiers | Sankey and Treemap volume conservation |
+| Complexity budget | Node/edge count within editorial limits |
+
+## Usage
+
+```typescript
+import { validateGeometryMasks, validate4pxGrid } from '@qillqa-latam/diagram-design/linter';
+
+const svg = renderToSvg(diagram);
+const geomIssues = validateGeometryMasks(svg);
+const gridIssues = validate4pxGrid(svg);
+
+for (const issue of [...geomIssues, ...gridIssues]) {
+  console.warn(`[${issue.severity}] ${issue.rule}: ${issue.message}`);
+}
+```
+
+## CLI lint
+
+```bash
+npx @qillqa-latam/diagram-design lint architecture.html
+```
+
+See the [CLI guide](/guides/cli) for full command reference.

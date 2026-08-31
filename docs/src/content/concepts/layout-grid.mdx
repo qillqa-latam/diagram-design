@@ -1,0 +1,32 @@
+# 4px Grid & Routing
+
+The layout engine enforces a **non-negotiable 4px grid** on all coordinates and dimensions. This is the foundation of editorial diagram quality.
+
+## Grid rules
+
+- Every `x`, `y`, `width`, and `height` must align to multiples of 4px
+- The `validate4pxGrid` linter catches off-grid geometry in rendered SVG
+- Snap helpers in the layout module round values to the nearest grid line
+
+## Connector rules (6 mandatory)
+
+1. **Orthogonal only** — no diagonal connectors
+2. **Quarter arcs** — corner turns use 8px radius arcs
+3. **Label margins** — 6–10px between label text and connector stroke, with paper masks
+4. **Bridge hops** — crossing lines use hop arcs, not overlaps
+5. **Attach-point fanning** — multiple connections to one node fan ≥ 12px apart
+6. **Zone-aware routing** — connectors respect zone boundaries
+
+## Layout module
+
+```typescript
+import { snapToGrid, routeOrthogonal } from '@qillqa-latam/diagram-design/layout';
+
+const x = snapToGrid(217); // → 216
+```
+
+<DiagramPreview id="flowchart" />
+
+<Callout type="tip" title="Taste Gate">
+  Run linters on rendered output to verify grid adherence before publishing diagrams. See [Taste Gate](/concepts/taste-gate).
+</Callout>

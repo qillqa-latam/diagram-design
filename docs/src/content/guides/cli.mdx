@@ -1,0 +1,36 @@
+# CLI
+
+The `diagram-design` binary ships with the package and supports import, render, and lint operations.
+
+## import-mermaid
+
+Convert a Mermaid (`.mmd`) file to editorial HTML, SVG, or PNG:
+
+```bash
+npx @qillqa-latam/diagram-design import-mermaid architecture.mmd -f html -o architecture.html
+npx @qillqa-latam/diagram-design import-mermaid flow.mmd -f svg -t dark
+```
+
+Options:
+
+- `-f, --format` — `html`, `svg`, or `png` (default: `html`)
+- `-o, --out` — output file path
+- `-t, --theme` — `light`, `dark`, or `terminal`
+
+## import-drawio
+
+Convert a Draw.io (`.drawio`) file:
+
+```bash
+npx @qillqa-latam/diagram-design import-drawio diagram.drawio -f svg -o diagram.svg
+```
+
+## lint
+
+Validate diagram SVG/HTML against Taste Gate rules:
+
+```bash
+npx @qillqa-latam/diagram-design lint architecture.html
+```
+
+Reports geometry mask and 4px grid issues with severity levels.

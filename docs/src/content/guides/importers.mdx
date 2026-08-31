@@ -1,0 +1,42 @@
+# Importers
+
+Redraw external diagram sources into editorial Diagram Design output.
+
+## Mermaid
+
+<DiagramPreview id="importer-mermaid-seq" />
+
+```typescript
+import { importMermaid } from '@qillqa-latam/diagram-design/importers';
+import { renderToSvg } from '@qillqa-latam/diagram-design';
+
+const mermaidSource = `
+sequenceDiagram
+  participant A as Client
+  participant B as API
+  A->>B: Request
+  B-->>A: Response
+`;
+
+const diagram = importMermaid(mermaidSource, { theme: 'light' });
+const svg = renderToSvg(diagram);
+```
+
+Supported Mermaid diagram types include sequence, flowchart, state, and architecture-style graphs.
+
+## Draw.io
+
+<DiagramPreview id="importer-drawio" />
+
+```typescript
+import { importDrawio } from '@qillqa-latam/diagram-design/importers';
+import { renderToHtml } from '@qillqa-latam/diagram-design';
+
+const xml = fs.readFileSync('diagram.drawio', 'utf-8');
+const diagram = importDrawio(xml, { theme: 'dark' });
+const html = renderToHtml(diagram);
+```
+
+## CLI
+
+See the [CLI guide](/guides/cli) for `import-mermaid` and `import-drawio` commands.

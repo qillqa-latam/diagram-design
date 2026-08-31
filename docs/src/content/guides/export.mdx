@@ -1,0 +1,40 @@
+# Export
+
+Diagram Design supports multiple output formats from the same diagram instance.
+
+## SVG
+
+Standalone SVG for embedding in docs, slides, or design tools:
+
+```typescript
+import { renderToSvg } from '@qillqa-latam/diagram-design';
+
+const svg = renderToSvg(diagram);
+fs.writeFileSync('diagram.svg', svg);
+```
+
+## HTML
+
+Full editorial HTML document with tokens, typography, and optional motion:
+
+```typescript
+import { renderToHtml } from '@qillqa-latam/diagram-design';
+
+const html = renderToHtml(diagram, { theme: 'light', motion: 'reveal' });
+fs.writeFileSync('diagram.html', html);
+```
+
+## PNG
+
+Raster export via `@resvg/resvg-js` (Node.js only):
+
+```typescript
+import { renderToPngBuffer } from '@qillqa-latam/diagram-design';
+
+const buffer = await renderToPngBuffer(diagram);
+fs.writeFileSync('diagram.png', buffer);
+```
+
+<Callout type="note" title="Isomorphic rendering">
+  SVG and HTML rendering work in browser and Node.js. PNG export requires Node.js with the Resvg native binding.
+</Callout>

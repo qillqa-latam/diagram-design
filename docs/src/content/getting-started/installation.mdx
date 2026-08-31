@@ -1,0 +1,40 @@
+# Installation
+
+Install `@qillqa-latam/diagram-design` from npm using your preferred package manager.
+
+```bash
+pnpm add @qillqa-latam/diagram-design
+```
+
+```bash
+npm install @qillqa-latam/diagram-design
+```
+
+```bash
+yarn add @qillqa-latam/diagram-design
+```
+
+## Requirements
+
+- **Node.js** 18 or later
+- **TypeScript** 5.x recommended for full type inference
+
+## Package exports
+
+The library exposes modular entry points:
+
+| Import path | Description |
+|-------------|-------------|
+| `@qillqa-latam/diagram-design` | Main entry — diagrams, renderers, patterns |
+| `@qillqa-latam/diagram-design/tokens` | Design tokens and theme palettes |
+| `@qillqa-latam/diagram-design/layout` | 4px grid and orthogonal router |
+| `@qillqa-latam/diagram-design/diagrams` | All 39 diagram type classes |
+| `@qillqa-latam/diagram-design/semantic-patterns` | Behavioral pattern factories |
+| `@qillqa-latam/diagram-design/renderers` | HTML and SVG renderers |
+| `@qillqa-latam/diagram-design/linter` | Taste Gate validators |
+| `@qillqa-latam/diagram-design/importers` | Mermaid and Draw.io importers |
+| `@qillqa-latam/diagram-design/icons` | 80+ monochrome SVG icons |
+
+<Callout type="tip" title="CLI">
+  The package includes a `diagram-design` binary. Run via `npx @qillqa-latam/diagram-design` — see the [CLI guide](/guides/cli).
+</Callout>

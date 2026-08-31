@@ -1,0 +1,45 @@
+# Design Tokens
+
+Diagram Design uses a semantic token system so diagrams stay consistent across skins and client profiles.
+
+## Semantic roles
+
+| Token | Purpose |
+|-------|---------|
+| `paper` | Primary background surface |
+| `paper-2` | Secondary background / zones |
+| `ink` | Primary text and strokes |
+| `muted` | Secondary labels |
+| `soft` | Tertiary / de-emphasized text |
+| `rule` | Hairline borders (RGBA) |
+| `rule-solid` | Solid divider lines |
+| `accent` | Focal highlights and emphasis |
+| `accent-tint` | Accent background wash |
+| `link` | Hyperlinks and link-style connectors |
+
+## Series palettes
+
+Quantitative diagrams use `series-1` through `series-5` for data series colors. Light and dark skins each define a coordinated palette (sage, dusty-blue, mustard, rust-brown, slate).
+
+## Skins
+
+Three built-in skins ship with the library:
+
+- **Light** — default editorial paper background
+- **Dark** — inverted ink-on-paper for dark UIs
+- **Terminal** — high-contrast developer aesthetic
+
+## Client profiles
+
+Wrap rendered HTML in a container with class `.diagram-design` and optional `data-profile` attributes to resolve client-specific token overrides.
+
+```typescript
+import { DEFAULT_LIGHT_COLORS, DEFAULT_DARK_COLORS } from '@qillqa-latam/diagram-design/tokens';
+
+const colors = DEFAULT_LIGHT_COLORS;
+// colors.paper, colors.ink, colors.accent, ...
+```
+
+<Callout type="note" title="Typography">
+  Annotation callouts use Instrument Serif (italic, max 2 per figure). Body labels use the editorial sans stack defined in the token system.
+</Callout>

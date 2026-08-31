@@ -1,0 +1,35 @@
+# Themes & Motion
+
+## Themes
+
+Pass a theme when building diagrams or importing external sources:
+
+```typescript
+const diagram = new ArchitectureDiagram({ /* ... */ });
+const html = renderToHtml(diagram, { theme: 'dark' });
+```
+
+Available themes: `light`, `dark`, `terminal`.
+
+## Motion
+
+The motion engine supports accessible animation modes for HTML export:
+
+| Mode | Behavior |
+|------|----------|
+| `none` | Static output (default) |
+| `reveal` | Progressive disclosure on load |
+| `step` | Step-through animation for presentations |
+| `loop` | Continuous subtle loop (use sparingly) |
+
+```typescript
+const html = renderToHtml(diagram, { theme: 'light', motion: 'reveal' });
+```
+
+<Callout type="note" title="Accessibility">
+  Motion respects `prefers-reduced-motion` when rendering to HTML. Use `none` for print and PDF pipelines.
+</Callout>
+
+## Sketchy filter
+
+Optional hand-drawn displacement via SVG `feTurbulence` + `feDisplacementMap` for informal sketches. Enable through diagram options where supported.
