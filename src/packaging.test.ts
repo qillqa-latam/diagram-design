@@ -40,10 +40,11 @@ describe('NPM / PNPM Distributables Hermetic Isolation Test', () => {
   it('should guarantee npm pack --dry-run contains 0 playground files in the publish tarball', () => {
     try {
       // --ignore-scripts skips prepack/build so stdout stays valid JSON
-      const output = execSync('npm pack --dry-run --json --ignore-scripts', {
+      const npmCmd = process.platform === 'win32' ? 'npm.cmd' : 'npm';
+      const output = execSync(`${npmCmd} pack --dry-run --json --ignore-scripts`, {
         cwd: path.resolve(__dirname, '..'),
         encoding: 'utf-8',
-        timeout: 60_000
+        timeout: 20_000
       });
 
       const packInfo = JSON.parse(output);

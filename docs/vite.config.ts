@@ -22,7 +22,7 @@ export default defineConfig({
   root: path.resolve(__dirname),
   base: '/diagram-design/',
   plugins: [
-    { enforce: 'pre', ...mdx() },
+    { enforce: 'pre', ...mdx({ providerImportSource: '@mdx-js/react' }) },
     react(),
     copyIndexAs404()
   ],
