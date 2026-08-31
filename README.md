@@ -45,9 +45,9 @@ A modular, strongly-typed, isomorphic TypeScript library implementing the comple
 ## Installation
 
 ```bash
-pnpm add diagram-design
+pnpm add @qillqa-latam/diagram-design
 # or
-npm install diagram-design
+npm install @qillqa-latam/diagram-design
 ```
 
 ---
@@ -57,7 +57,7 @@ npm install diagram-design
 ### 1. Architecture Diagram
 
 ```typescript
-import { ArchitectureDiagram, renderToHtml, renderToSvg } from 'diagram-design';
+import { ArchitectureDiagram, renderToHtml, renderToSvg } from '@qillqa-latam/diagram-design';
 
 const diagram = new ArchitectureDiagram({
   title: 'Content Site in Production',
@@ -84,7 +84,7 @@ const html = renderToHtml(diagram);
 ### 2. Sankey Volume Flow
 
 ```typescript
-import { SankeyDiagram, renderToSvg } from 'diagram-design';
+import { SankeyDiagram, renderToSvg } from '@qillqa-latam/diagram-design';
 
 const sankey = new SankeyDiagram({
   title: 'CI Compute Allocation',
@@ -112,7 +112,7 @@ const svg = renderToSvg(sankey);
 ### 3. Parametric Loop / Flywheel
 
 ```typescript
-import { LoopDiagram, renderToSvg } from 'diagram-design';
+import { LoopDiagram, renderToSvg } from '@qillqa-latam/diagram-design';
 
 const loop = new LoopDiagram({
   title: 'The Self-Improving Operating Loop',
@@ -132,7 +132,7 @@ const svg = renderToSvg(loop);
 ### 4. Semantic Behavioral Patterns
 
 ```typescript
-import { createFanInQueueDiagram, renderToSvg } from 'diagram-design';
+import { createFanInQueueDiagram, renderToSvg } from '@qillqa-latam/diagram-design';
 
 const queueDiagram = createFanInQueueDiagram({
   title: 'Real-time Event Ingestion Bottleneck',
@@ -154,10 +154,10 @@ const queueDiagram = createFanInQueueDiagram({
 
 ```bash
 # Convert a Mermaid diagram into an editorial SVG or HTML
-npx diagram-design import-mermaid architecture.mmd -f html -o architecture.html
+npx @qillqa-latam/diagram-design import-mermaid architecture.mmd -f html -o architecture.html
 
 # Validate a diagram against the Taste Gate
-npx diagram-design lint architecture.html
+npx @qillqa-latam/diagram-design lint architecture.html
 ```
 
 ---
