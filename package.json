@@ -1,8 +1,9 @@
 {
-  "name": "diagram-design",
+  "name": "@qillqa-latam/diagram-design",
   "version": "1.0.0",
   "description": "Editorial diagrams your designer won't hate. Reusable TypeScript library with 39 diagram types, 7 semantic patterns, and 4px grid orthogonal routing.",
   "type": "module",
+  "packageManager": "pnpm@11.18.0",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -72,7 +73,10 @@
     "test:pack": "vitest run src/packaging.test.ts",
     "typecheck": "tsc --noEmit",
     "commitlint": "commitlint --from=HEAD~1",
-    "prepare": "husky"
+    "prepare": "husky",
+    "prepack": "pnpm run build",
+    "prepublishOnly": "pnpm run test && pnpm run test:pack",
+    "release:check": "pnpm run build && pnpm run test && pnpm run test:pack && npm pack --dry-run"
   },
   "keywords": [
     "diagram",
@@ -87,8 +91,22 @@
     "treemap",
     "typescript"
   ],
-  "author": "",
+  "author": "qillqa-latam",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qillqa-latam/diagram-design.git"
+  },
+  "homepage": "https://github.com/qillqa-latam/diagram-design#readme",
+  "bugs": {
+    "url": "https://github.com/qillqa-latam/diagram-design/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
     "commander": "^13.1.0"
   },
