@@ -7,4 +7,6 @@ coverage/
 .vitest/
 .vite/
 dist-playground/
+dist-docs/
 playground/dist/
+docs/dist/

@@ -11,9 +11,11 @@ describe('NPM / PNPM Distributables Hermetic Isolation Test', () => {
     expect(pkg.files).toBeDefined();
     expect(pkg.files).toEqual(['dist', 'README.md', 'LICENSE']);
 
-    // Must not contain playground in files
+    // Must not contain playground, docs, or shared in files
     for (const fileEntry of pkg.files) {
       expect(fileEntry).not.toContain('playground');
+      expect(fileEntry).not.toContain('docs');
+      expect(fileEntry).not.toContain('shared');
       expect(fileEntry).not.toContain('vite');
     }
   });
@@ -24,9 +26,13 @@ describe('NPM / PNPM Distributables Hermetic Isolation Test', () => {
 
     for (const key of exportKeys) {
       expect(key).not.toContain('playground');
+      expect(key).not.toContain('docs');
+      expect(key).not.toContain('shared');
       const target = pkg.exports[key];
       const targetStr = JSON.stringify(target);
       expect(targetStr).not.toContain('playground');
+      expect(targetStr).not.toContain('docs');
+      expect(targetStr).not.toContain('shared');
       expect(targetStr).toContain('dist');
     }
   });
@@ -52,6 +58,11 @@ describe('NPM / PNPM Distributables Hermetic Isolation Test', () => {
         'playground/',
         'playground',
         'dist-playground',
+        'docs/',
+        'docs',
+        'dist-docs',
+        'shared/',
+        'shared',
         'vite.config.ts',
         'tsconfig.playground.json'
       ];
@@ -76,6 +87,8 @@ describe('NPM / PNPM Distributables Hermetic Isolation Test', () => {
       // In case npm is not in path or dry-run fails, inspect files whitelist manually
       console.warn('npm pack --dry-run test fallback:', message);
       expect(pkg.files).not.toContain('playground');
+      expect(pkg.files).not.toContain('docs');
+      expect(pkg.files).not.toContain('shared');
     }
   }, 60_000);
 });
