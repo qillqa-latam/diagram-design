@@ -1,6 +1,11 @@
 # Diagram Design (TypeScript)
 
+[![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-2d3142?style=flat&logo=github)](https://qillqa-latam.github.io/diagram-design/)
+[![npm](https://img.shields.io/npm/v/@qillqa-latam/diagram-design)](https://www.npmjs.com/package/@qillqa-latam/diagram-design)
+
 **Editorial diagrams your designer won't hate.**
+
+📖 **[Documentation](https://qillqa-latam.github.io/diagram-design/)** · [npm](https://www.npmjs.com/package/@qillqa-latam/diagram-design) · [GitHub](https://github.com/qillqa-latam/diagram-design)
 
 A modular, strongly-typed, isomorphic TypeScript library implementing the complete [Diagram Design](https://github.com/cathrynlavery/diagram-design) specification: **39 visual diagram types**, **7 behavioral semantic patterns**, strict 4px grid orthogonal routing, skinnable design tokens, accessible motion, Mermaid/Draw.io importers, and HTML/SVG/PNG export engines.
 
@@ -158,6 +163,20 @@ npx @qillqa-latam/diagram-design import-mermaid architecture.mmd -f html -o arch
 
 # Validate a diagram against the Taste Gate
 npx @qillqa-latam/diagram-design lint architecture.html
+```
+
+---
+
+## Documentation
+
+Full documentation is published at **[qillqa-latam.github.io/diagram-design](https://qillqa-latam.github.io/diagram-design/)**.
+
+```bash
+# Run the documentation site locally
+pnpm dev:docs
+
+# Build static site for GitHub Pages
+pnpm build:docs
 ```
 
 ---
